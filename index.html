@@ -1,11 +1,216 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#122746"><title>Parcial II · Derecho Constitucional</title><style>
-:root{--navy:#122746;--blue:#285aa8;--gold:#e4b84f;--bg:#f3f6fa;--ink:#1c2637;--muted:#657187;--line:#d9e1ec;--green:#137548;--red:#b42332}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:linear-gradient(135deg,#122746,#23528a);color:#fff;padding:28px 18px;border-bottom:5px solid var(--gold)}.wrap{max-width:880px;margin:auto}header small{color:#f2d78d;text-transform:uppercase;letter-spacing:.12em;font-weight:800}h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.15;margin:8px 0}header p{margin:8px 0 0;color:#e4ebf6}main{max-width:880px;margin:20px auto;padding:0 12px 35px}.panel,.question,.result{background:white;border:1px solid var(--line);border-radius:15px;padding:19px;margin-bottom:14px;box-shadow:0 4px 15px #172a4408}.panel h2{margin:0 0 6px;font-size:1.2rem}.muted{color:var(--muted);font-size:.9rem}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.bar{height:8px;background:#e7edf5;border-radius:20px;overflow:hidden;margin:12px 0 5px}.bar div{height:100%;width:0;background:var(--gold)}.qtop{display:flex;justify-content:space-between;gap:10px;align-items:center}.qnum{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);font-weight:800}.article{font-size:.8rem;font-weight:800;color:#344e72;background:#edf3fb;padding:4px 8px;border-radius:6px}h3{font-size:1.06rem;line-height:1.45;margin:11px 0 14px}.options{display:grid;gap:8px}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}.option:hover{background:#f7faff;border-color:#9cb1d0}.option input{margin-top:5px;accent-color:var(--blue)}.option span{flex:1}.option.correct{background:#effaf3;border-color:#7dc49f}.option.wrong{background:#fff1f2;border-color:#e6a0a8}.feedback{margin-top:11px;padding:11px 13px;border-left:4px solid var(--blue);background:#f0f4f9;border-radius:8px}.feedback.good{border-color:var(--green);background:#effaf3}.feedback.bad{border-color:var(--red);background:#fff1f2}.hidden{display:none!important}.btn{border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--blue);color:#fff}.secondary{background:white;border:1px solid var(--line);color:var(--navy)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.score{font-size:3rem;font-weight:850;color:var(--navy)}.result{text-align:center}.foot{text-align:center;color:var(--muted);font-size:.82rem;padding:12px}.option input:disabled{cursor:default}@media(max-width:540px){header{padding:23px 15px}main{margin-top:13px;padding:0 9px 25px}.panel,.question,.result{padding:15px}.actions{display:grid}.btn{width:100%}}
-</style></head><body><header><div class="wrap"><small>República de Panamá · Derecho Constitucional</small><h1>Parcial de práctica II</h1><p>Cuestionario basado en los artículos 146 al 200 de la Constitución Política de Panamá.</p></div></header><main><section class="panel"><h2>¡Hola, chicos!</h2><p>Les saluda su compañero <strong>Yonathan Harding</strong>. Esta versión está organizada por artículo y utiliza preguntas de aplicación e interpretación jurídica. Lee cada supuesto y selecciona la respuesta que corresponda al texto constitucional.</p><p class="muted">25 preguntas · selección múltiple · retroalimentación por artículo. Material de estudio, no sustituye la lectura íntegra de la Constitución.</p><div class="bar"><div id="progress"></div></div><div class="row muted"><span id="count">0 de 25 respondidas</span><span>Una respuesta por pregunta</span></div></section><div id="quiz"></div><section id="result" class="result hidden"><div class="qnum">Resultado</div><div id="score" class="score">0/25</div><h2 id="headline">Resultado del parcial</h2><p id="summary"></p><div class="actions"><button class="btn primary" id="review">Revisar preguntas</button><button class="btn secondary" id="again">Intentar de nuevo</button></div></section><div class="actions"><button class="btn primary" id="finish">Finalizar parcial</button><button class="btn secondary" id="reset">Reiniciar</button></div><footer class="foot">Consulta el texto constitucional vigente. Fuente de referencia: Constitución Política de la República de Panamá publicada en el portal de Constitución vigente y en el portal oficial del Ministerio de Gobierno.</footer></main><script>
-const questions = [{"a": "146", "q": "¿Cómo se eligen los integrantes de la Asamblea Nacional?", "o": ["Por designación del Presidente.", "Por postulación partidista o libre postulación, mediante votación popular directa.", "Por elección de los concejos municipales.", "Por nombramiento del Tribunal Electoral."], "c": 1, "e": "El artículo 146 establece la postulación partidista o por libre postulación y la votación popular directa."}, {"a": "147", "q": "¿Cuántos diputados integran la Asamblea Nacional según el artículo 147?", "o": ["57", "65", "71", "81"], "c": 2, "e": "El artículo 147 fija la composición en setenta y un diputados y regula los circuitos electorales."}, {"a": "147", "q": "En un distrito donde se elige más de un diputado, ¿qué regla general prevé el artículo 147?", "o": ["Cada corregimiento constituye necesariamente un circuito.", "El distrito integra un solo circuito electoral, con la excepción prevista para el distrito de Panamá.", "Los diputados se asignan por sorteo.", "El Ejecutivo decide el número de circuitos."], "c": 1, "e": "El artículo 147 dispone esa regla y exceptúa al distrito de Panamá, donde habrá circuitos de tres o más diputados."}, {"a": "148", "q": "¿Cuál es el período constitucional de los diputados?", "o": ["Tres años.", "Cuatro años.", "Cinco años, coincidente con la elección ordinaria presidencial.", "Seis años."], "c": 2, "e": "El artículo 148 establece un período de cinco años."}, {"a": "149", "q": "¿Cuándo se celebran las dos legislaturas ordinarias de la Asamblea Nacional?", "o": ["Enero a abril y julio a octubre.", "Febrero a mayo y agosto a noviembre.", "Todo el año sin recesos.", "Solo cuando las convoque el Ejecutivo."], "c": 0, "e": "El artículo 149 establece legislaturas ordinarias del 1 de julio al 31 de octubre y del 2 de enero al 30 de abril."}, {"a": "149", "q": "Durante una legislatura extraordinaria convocada por el Órgano Ejecutivo, ¿qué asuntos puede conocer la Asamblea?", "o": ["Cualquier asunto que propongan los diputados.", "Exclusivamente los asuntos sometidos por el Órgano Ejecutivo.", "Únicamente proyectos municipales.", "Solo asuntos electorales."], "c": 1, "e": "El artículo 149 limita la legislatura extraordinaria a los asuntos que el Ejecutivo someta a consideración."}, {"a": "150", "q": "Un diputado sostiene que solo debe actuar en beneficio de quienes votaron por él. ¿Qué dispone la Constitución?", "o": ["Que representa exclusivamente a sus votantes.", "Que actúa en interés de la Nación y representa a su partido y a los electores de su circuito.", "Que representa únicamente al partido político.", "Que no tiene deberes representativos."], "c": 1, "e": "El artículo 150 dispone que los diputados actuarán en interés de la Nación y representan a su partido y a los electores de su circuito."}, {"a": "151", "q": "¿Qué garantía reconoce el artículo 151 al diputado sujeto a revocatoria partidista?", "o": ["Que no puede ser revocado bajo ninguna circunstancia.", "Derecho a ser oído y defenderse en dos instancias dentro del partido.", "Que decide exclusivamente el Presidente de la República.", "Que basta una comunicación verbal sin procedimiento."], "c": 1, "e": "El artículo 151 prevé causales y formalidades, incluyendo el derecho de defensa en dos instancias y recurso ante el Tribunal Electoral."}, {"a": "159", "q": "¿Cuál es una atribución de la Asamblea Nacional contemplada en el artículo 159?", "o": ["Expedir, modificar, reformar o derogar los códigos nacionales.", "Dictar sentencias penales en última instancia.", "Nombrar libremente a los ministros.", "Dirigir las relaciones exteriores."], "c": 0, "e": "El artículo 159 enumera las funciones legislativas, incluidas las relativas a los códigos nacionales."}, {"a": "163", "q": "La Asamblea aprueba una resolución para intervenir en un asunto de competencia exclusiva de otro Órgano del Estado. ¿Qué regla aplica?", "o": ["Es válido porque la Asamblea tiene competencia ilimitada.", "Está prohibido inmiscuirse por resolución en asuntos de competencia privativa de otros Órganos.", "Es válido si lo solicita un diputado.", "Solo requiere refrendo ministerial."], "c": 1, "e": "El artículo 163 prohíbe a la Asamblea inmiscuirse por resoluciones en asuntos de competencia privativa de otros Órganos del Estado."}, {"a": "164", "q": "¿Cómo clasifica la Constitución las leyes?", "o": ["Orgánicas y ordinarias.", "Nacionales y provinciales.", "Constitucionales y judiciales.", "Ejecutivas y legislativas."], "c": 0, "e": "El artículo 164 clasifica las leyes en orgánicas y ordinarias según las materias relacionadas con el artículo 159."}, {"a": "165", "q": "¿Quién puede proponer un proyecto de ley orgánica?", "o": ["Cualquier ciudadano individualmente, sin trámite.", "Una Comisión Permanente de la Asamblea Nacional.", "Cualquier alcalde sin autorización.", "Solo el Presidente de la República por decreto."], "c": 1, "e": "El artículo 165 incluye a las Comisiones Permanentes entre quienes pueden proponer leyes orgánicas; también contempla otros proponentes y condiciones específicas."}, {"a": "165", "q": "¿Qué mayoría requieren las leyes orgánicas en segundo y tercer debate?", "o": ["Mayoría absoluta de los miembros de la Asamblea Nacional.", "Unanimidad.", "Dos tercios de los diputados asistentes en todos los casos.", "Mayoría de los ministros."], "c": 0, "e": "El artículo 165 exige mayoría absoluta de los miembros para la expedición de leyes orgánicas en segundo y tercer debates."}, {"a": "166", "q": "¿Cuáles son requisitos para que un proyecto se convierta en ley?", "o": ["Dos debates en una misma sesión.", "Tres debates en días distintos y sanción del Ejecutivo conforme a la Constitución.", "Aprobación del Consejo de Gabinete solamente.", "Publicación antes de su aprobación."], "c": 1, "e": "El artículo 166 exige tres debates en días distintos y sanción del Ejecutivo."}, {"a": "169–170", "q": "El Ejecutivo objeta un proyecto aprobado por la Asamblea. ¿Cuál enunciado es correcto?", "o": ["El Ejecutivo dispone de un máximo de treinta días hábiles para devolverlo con objeciones.", "Las objeciones eliminan el proyecto automáticamente.", "La Asamblea no puede reconsiderarlo.", "El Ejecutivo dispone de diez días calendario en todos los casos."], "c": 0, "e": "El artículo 169 fija un máximo de treinta días hábiles. El artículo 170 regula la reconsideración y la mayoría de dos tercios para insistir en el proyecto."}, {"a": "173", "q": "¿Cuál es el plazo constitucional para promulgar una ley después de su sanción?", "o": ["Dos días calendario.", "Seis días hábiles, salvo que la propia ley establezca una fecha posterior para entrar en vigor.", "Treinta días hábiles.", "No existe plazo constitucional."], "c": 1, "e": "El artículo 173 establece la promulgación dentro de los seis días hábiles siguientes a la sanción y permite que la ley fije una fecha posterior de vigencia."}, {"a": "175–176", "q": "¿Cuál afirmación describe correctamente la composición y el ejercicio de funciones del Órgano Ejecutivo?", "o": ["Lo integran el Presidente y los diputados.", "Lo integran el Presidente y los Ministros de Estado; el Presidente actúa solo, con el ministro del ramo, con el Consejo de Gabinete u otra forma constitucional.", "Lo integran los magistrados de la Corte Suprema.", "Lo integran los alcaldes y gobernadores."], "c": 1, "e": "Los artículos 175 y 176 establecen la composición del Órgano Ejecutivo y las formas constitucionales en que el Presidente ejerce sus funciones."}, {"a": "177–179", "q": "Una persona tiene 34 años y es panameña por nacimiento. ¿Cumple los requisitos de edad para ser Presidente o Vicepresidente?", "o": ["Sí, porque basta tener 30 años.", "No; debe haber cumplido 35 años.", "Sí, si lo aprueba la Asamblea.", "La Constitución no fija edad mínima."], "c": 1, "e": "El artículo 179 exige ser panameño por nacimiento y haber cumplido treinta y cinco años."}, {"a": "180", "q": "¿Qué impedimento contempla el artículo 180 para ser elegido Presidente o Vicepresidente?", "o": ["Haber sido condenado por cualquier falta administrativa.", "Haber sido condenado por delito doloso con pena privativa de libertad de cinco años o más mediante sentencia ejecutoriada.", "Haber sido diputado.", "No tener título universitario."], "c": 1, "e": "El artículo 180 establece el impedimento por condena ejecutoriada por delito doloso con pena privativa de libertad de cinco años o más."}, {"a": "183–184", "q": "¿Cuál diferencia entre los artículos 183 y 184 es correcta?", "o": ["Ambos enumeran exclusivamente funciones de la Asamblea.", "El 183 enumera atribuciones que el Presidente ejerce por sí solo; el 184, las que ejerce con participación del ministro respectivo.", "El 183 regula a los diputados y el 184 a los jueces.", "No existe diferencia entre ambos artículos."], "c": 1, "e": "Los artículos 183 y 184 distinguen las atribuciones presidenciales que se ejercen por sí solas de aquellas que requieren la participación del ministro respectivo."}, {"a": "185–186", "q": "¿Qué función corresponde al Vicepresidente según el artículo 185?", "o": ["Sancionar leyes por su cuenta.", "Reemplazar al Presidente en sus faltas conforme a la Constitución y ejercer las demás atribuciones constitucionales.", "Nombrar diputados.", "Dirigir la Corte Suprema."], "c": 1, "e": "El artículo 185 regula las atribuciones del Vicepresidente, incluida la sustitución presidencial conforme a la Constitución."}, {"a": "194–196", "q": "Un ciudadano es panameño por nacimiento, tiene 24 años y no registra condenas. ¿Puede ser Ministro de Estado?", "o": ["Sí, porque la edad mínima es 21 años.", "No, porque debe haber cumplido 25 años.", "Sí, si es diputado.", "No, porque todo ministro debe tener 35 años."], "c": 1, "e": "El artículo 196 exige ser panameño por nacimiento, haber cumplido 25 años y no haber sido condenado en los términos que indica la norma."}, {"a": "197", "q": "¿Puede nombrarse ministro a un pariente del Presidente dentro del cuarto grado de consanguinidad?", "o": ["Sí, siempre que tenga experiencia.", "No, la Constitución lo prohíbe; también restringe que integren un mismo Gabinete personas vinculadas por los grados de parentesco indicados.", "Sí, si lo aprueba la Asamblea Nacional.", "La restricción solo se aplica a parientes por afinidad."], "c": 1, "e": "El artículo 197 establece la prohibición por parentesco dentro del cuarto grado de consanguinidad o segundo de afinidad."}, {"a": "198", "q": "¿Qué deben presentar personalmente los ministros a la Asamblea Nacional?", "o": ["Un informe o memoria anual sobre los asuntos de su ministerio y las reformas que estimen oportunas.", "Un informe semanal sobre cada funcionario.", "Solo un informe al terminar su mandato.", "Una propuesta de ley obligatoria cada mes."], "c": 0, "e": "El artículo 198 establece la obligación de entregar personalmente un informe o memoria anual."}, {"a": "199–200", "q": "¿Cuál enunciado describe correctamente el Consejo de Gabinete?", "o": ["Es una reunión de diputados presidida por el presidente de la Asamblea.", "Es la reunión del Presidente o Encargado de la Presidencia con el Vicepresidente y los Ministros; tiene funciones consultivas y otras atribuciones enumeradas constitucionalmente.", "Es un órgano judicial.", "Está integrado únicamente por ministros sin el Presidente."], "c": 1, "e": "El artículo 199 define su composición; el artículo 200 enumera sus funciones, incluidas la consultiva y otras competencias específicas."}];
-const quiz=document.getElementById('quiz');
-function render(){quiz.innerHTML='';questions.forEach((q,i)=>{const card=document.createElement('section');card.className='question';card.id='q'+i;const top=document.createElement('div');top.className='qtop';const n=document.createElement('span');n.className='qnum';n.textContent='Pregunta '+(i+1);const a=document.createElement('span');a.className='article';a.textContent='Art. '+q.a;top.append(n,a);const title=document.createElement('h3');title.textContent=q.q;const opts=document.createElement('div');opts.className='options';q.o.forEach((text,j)=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name='q'+i;input.value=j;const span=document.createElement('span');span.textContent=String.fromCharCode(65+j)+'. '+text;input.addEventListener('change',()=>answer(i,j,card));label.append(input,span);opts.append(label)});const fb=document.createElement('div');fb.className='feedback hidden';fb.id='fb'+i;card.append(top,title,opts,fb);quiz.append(card)});progress()}
-function answer(i,j,card){const q=questions[i],fb=document.getElementById('fb'+i);card.querySelectorAll('.option').forEach((el,k)=>{el.classList.remove('correct','wrong');if(k===q.c)el.classList.add('correct');if(k===j&&j!==q.c)el.classList.add('wrong')});fb.classList.remove('hidden','good','bad');fb.classList.add(j===q.c?'good':'bad');fb.textContent=(j===q.c?'Correcto. ':'Respuesta incorrecta. ')+q.e;card.querySelectorAll('input').forEach(x=>x.disabled=true);progress()}
-function progress(){let n=questions.filter((q,i)=>document.querySelector('input[name="q'+i+'"]:checked')).length;document.getElementById('count').textContent=n+' de '+questions.length+' respondidas';document.getElementById('progress').style.width=(n/questions.length*100)+'%'}
-function finish(){let score=0,answered=0;questions.forEach((q,i)=>{let x=document.querySelector('input[name="q'+i+'"]:checked');if(x){answered++;if(+x.value===q.c)score++}else{let fb=document.getElementById('fb'+i);fb.classList.remove('hidden','good');fb.classList.add('bad');fb.textContent='Sin responder. '+q.e}});document.getElementById('score').textContent=score+'/'+questions.length;let pct=Math.round(score/questions.length*100);document.getElementById('headline').textContent=pct>=88?'Dominio muy bueno':pct>=72?'Buen avance':pct>=56?'Necesitas reforzar algunos artículos':'Conviene repasar el texto constitucional';document.getElementById('summary').textContent='Respondiste '+answered+' de '+questions.length+' preguntas. Calificación: '+pct+'%. Revisa las explicaciones vinculadas a cada artículo.';document.getElementById('result').classList.remove('hidden');document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'})}
-function reset(){render();document.getElementById('result').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}document.getElementById('finish').addEventListener('click',finish);document.getElementById('reset').addEventListener('click',reset);document.getElementById('again').addEventListener('click',reset);document.getElementById('review').addEventListener('click',()=>{document.getElementById('result').classList.add('hidden');document.getElementById('quiz').scrollIntoView({behavior:'smooth'})});render();
-</script></body></html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repaso Derecho Penal I</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial;background:#f1f4f8;color:#263445;margin:0;padding:20px}
+main{max-width:900px;margin:auto}
+header{background:#17324d;color:white;padding:28px;border-radius:14px}
+h1{margin:0}
+.card{background:white;padding:22px;border-radius:12px;margin:18px 0;box-shadow:0 3px 12px #0001}
+.question{padding:18px 0;border-bottom:1px solid #ddd}
+.option{display:block;padding:12px;margin:8px 0;border:1px solid #d5dce3;border-radius:8px;cursor:pointer}
+.option:hover{background:#eef4f8}
+.option input{margin-right:10px}
+.correct{background:#e3f5e9;border-color:#27864a}
+.wrong{background:#fdeaea;border-color:#c0392b}
+.explanation{display:none;padding:12px;background:#eef4f8;border-radius:8px;margin-top:10px}
+button{background:#17324d;color:white;border:0;padding:13px 20px;border-radius:8px;cursor:pointer;margin:8px 5px 8px 0}
+button:hover{background:#245b82}
+#result{font-size:22px;font-weight:bold;margin:18px 0}
+small{color:#637383}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+<h1>Derecho Penal I</h1>
+<p>Repaso interactivo – Teoría de la Ley Penal</p>
+<p>Selección múltiple | 20 preguntas | 100 puntos</p>
+</header>
+
+<div class="card">
+<h2>Instrucciones</h2>
+<p>Lee cada pregunta y selecciona la respuesta que consideres correcta.</p>
+<p>Al finalizar podrás ver tu calificación y las explicaciones de cada respuesta.</p>
+</div>
+
+<div class="card">
+<h2>Examen de repaso</h2>
+<div id="quiz"></div>
+<button onclick="calificar()">Finalizar y calificar</button>
+<button onclick="reiniciar()">Repetir examen</button>
+<div id="result"></div>
+</div>
+
+</main>
+
+<script>
+const preguntas=[
+{
+q:"¿Qué se entiende por fuente de producción del Derecho Penal?",
+o:["Los medios utilizados para interpretar las leyes.","El órgano o sujeto con potestad para crear normas penales.","Las decisiones de los tribunales.","Las costumbres de una sociedad."],
+a:1,e:"Las fuentes de producción identifican quién tiene la potestad de crear las normas jurídicas penales. Esa potestad se ejerce por los órganos competentes del Estado."
+},
+{
+q:"¿Cuál es la fuente directa de conocimiento del Derecho Penal?",
+o:["La doctrina.","La costumbre.","La ley.","La jurisprudencia."],
+a:2,e:"La ley es la fuente directa de conocimiento porque contiene las disposiciones que describen los delitos y establecen sus consecuencias jurídicas."
+},
+{
+q:"¿Qué establece el principio de legalidad?",
+o:["Que el juez puede establecer delitos libremente.","Que una persona solo puede ser sancionada por hechos previstos previamente en la ley.","Que la costumbre puede establecer penas.","Que toda conducta inmoral debe castigarse."],
+a:1,e:"El principio de legalidad exige que el delito y la pena estén establecidos en una ley anterior a la realización del hecho."
+},
+{
+q:"¿Qué artículo de la Constitución Política de Panamá recoge el principio de legalidad penal?",
+o:["Artículo 159.","Artículo 31.","Artículo 32.","Artículo 17."],
+a:1,e:"El artículo 31 dispone que solo serán penados los hechos declarados punibles por ley anterior a su perpetración y exactamente aplicable al acto imputado."
+},
+{
+q:"¿Qué significa la expresión latina ius puniendi?",
+o:["Derecho a la defensa.","Poder punitivo del Estado.","Derecho a la propiedad.","Facultad de interpretar las leyes."],
+a:1,e:"Ius puniendi significa poder o facultad de castigar. Es la potestad punitiva que corresponde al Estado, dentro de los límites legales."
+},
+{
+q:"¿Quién es titular del poder punitivo?",
+o:["Los ciudadanos individualmente.","La Policía Nacional.","El Estado.","Los particulares."],
+a:2,e:"La titularidad del poder punitivo corresponde al Estado. Su ejercicio está limitado por las garantías constitucionales."
+},
+{
+q:"¿Puede la costumbre crear delitos?",
+o:["Sí, si es aceptada socialmente.","Sí, cuando tiene muchos años de existencia.","No, porque se exige una ley previa.","Sí, cuando lo determina un juez."],
+a:2,e:"La costumbre no puede crear delitos ni establecer penas. Esto responde al principio de legalidad penal."
+},
+{
+q:"¿Qué son las fuentes indirectas del Derecho Penal?",
+o:["Las que crean directamente delitos.","Las que ayudan a estudiar e interpretar las normas penales.","Las que sustituyen la Constitución.","Las que imponen sanciones."],
+a:1,e:"Son referencias que contribuyen al análisis e interpretación del Derecho Penal, como la doctrina y la jurisprudencia."
+},
+{
+q:"¿Cuál de las siguientes opciones constituye una fuente indirecta?",
+o:["La ley penal.","La doctrina.","El tipo penal.","La pena establecida por ley."],
+a:1,e:"La doctrina es una fuente indirecta de conocimiento porque contiene estudios y opiniones de especialistas en Derecho."
+},
+{
+q:"¿Qué establece el artículo 159 de la Constitución panameña?",
+o:["El principio de legalidad penal.","Atribuciones legislativas de la Asamblea Nacional, entre ellas expedir las leyes nacionales.","La facultad de los jueces de crear delitos.","La potestad de la costumbre para imponer penas."],
+a:1,e:"El artículo 159 contempla atribuciones legislativas de la Asamblea Nacional."
+},
+{
+q:"¿Por qué es importante el principio de legalidad?",
+o:["Porque permite castigar sin pruebas.","Porque limita el poder punitivo del Estado y brinda seguridad jurídica.","Porque permite crear penas retroactivamente.","Porque elimina el derecho de defensa."],
+a:1,e:"El principio de legalidad protege a las personas frente a sanciones arbitrarias y limita el poder del Estado."
+},
+{
+q:"Una persona realiza una conducta que la sociedad considera inmoral, pero que no está tipificada como delito. ¿Puede ser condenada penalmente por ese solo motivo?",
+o:["Sí, porque la sociedad lo considera incorrecto.","Sí, porque la moral reemplaza la ley.","No, porque debe existir una ley penal previa.","Sí, porque el juez puede inventar el delito."],
+a:2,e:"No puede existir condena penal por una conducta que no esté previamente establecida como delito en la ley."
+},
+{
+q:"¿Qué función cumple la jurisprudencia en el estudio del Derecho Penal?",
+o:["Crear delitos sin ley.","Contribuir a la interpretación de las normas mediante decisiones judiciales.","Sustituir la Constitución.","Establecer delitos mediante costumbres."],
+a:1,e:"La jurisprudencia permite conocer cómo los tribunales interpretan y aplican las normas jurídicas."
+},
+{
+q:"¿Qué función cumple la doctrina?",
+o:["Establecer penas obligatorias por sí misma.","Analizar y explicar las instituciones jurídicas mediante estudios especializados.","Reemplazar las leyes penales.","Crear delitos."],
+a:1,e:"La doctrina reúne estudios y opiniones de especialistas que ayudan a comprender el Derecho Penal."
+},
+{
+q:"¿Qué protege el principio de legalidad frente al poder del Estado?",
+o:["La arbitrariedad en la imposición de penas.","La seguridad jurídica de los ciudadanos.","La posibilidad de crear delitos libremente.","La aplicación de castigos sin ley."],
+a:1,e:"Protege la seguridad jurídica al exigir que las conductas punibles y sus sanciones estén previamente establecidas."
+},
+{
+q:"¿Cuál es la diferencia entre fuente de producción y fuente de conocimiento?",
+o:["No existe ninguna diferencia.","Producción identifica quién crea la norma; conocimiento permite conocerla y estudiarla.","Producción es la costumbre y conocimiento es la moral.","Ambas significan exclusivamente jurisprudencia."],
+a:1,e:"La fuente de producción responde quién tiene la potestad de crear la norma. La fuente de conocimiento indica cómo se conoce y estudia."
+},
+{
+q:"Un juez pretende sancionar una conducta utilizando únicamente una costumbre social. ¿Es correcto?",
+o:["Sí, porque el juez tiene libertad absoluta.","Sí, si la costumbre es antigua.","No, porque se requiere una ley penal previa.","Sí, si la mayoría está de acuerdo."],
+a:2,e:"La costumbre no puede sustituir la ley penal ni servir para crear delitos o penas."
+},
+{
+q:"¿Qué relación existe entre el ius puniendi y el principio de legalidad?",
+o:["El principio de legalidad elimina el poder del Estado.","El principio de legalidad establece límites al poder punitivo del Estado.","El ius puniendi permite castigar sin normas.","No tienen relación."],
+a:1,e:"El Estado tiene poder punitivo, pero debe ejercerlo dentro de los límites establecidos por la Constitución y la ley."
+},
+{
+q:"¿Qué significa que la ley penal debe ser anterior al hecho?",
+o:["Que puede aprobarse después del delito.","Que debe existir antes de que se realice la conducta punible.","Que puede establecerse durante el juicio.","Que depende de la opinión del juez."],
+a:1,e:"La ley debe estar vigente antes de la realización del hecho para que pueda fundamentar una sanción penal."
+},
+{
+q:"¿Cuál es la idea fundamental del principio de legalidad penal?",
+o:["No hay delito ni pena sin ley previa.","La costumbre tiene mayor fuerza que la ley.","El juez puede establecer delitos.","El Estado puede castigar cualquier conducta."],
+a:0,e:"La fórmula clásica del principio de legalidad es: no hay delito ni pena sin ley previa."
+}
+];
+
+const quiz=document.getElementById("quiz");
+
+preguntas.forEach((p,i)=>{
+let div=document.createElement("div");
+div.className="question";
+div.innerHTML=`<h3>${i+1}. ${p.q}</h3>`;
+p.o.forEach((op,j)=>{
+div.innerHTML+=`
+<label class="option" id="opt${i}_${j}">
+<input type="radio" name="q${i}" value="${j}">
+${String.fromCharCode(65+j)}. ${op}
+</label>`;
+});
+div.innerHTML+=`<div class="explanation" id="exp${i}"></div>`;
+quiz.appendChild(div);
+});
+
+function calificar(){
+let puntos=0;
+let contestadas=0;
+
+preguntas.forEach((p,i)=>{
+let sel=document.querySelector(`input[name="q${i}"]:checked`);
+let exp=document.getElementById("exp"+i);
+
+if(sel)contestadas++;
+
+let correcta=sel && Number(sel.value)===p.a;
+
+if(correcta)puntos+=5;
+
+p.o.forEach((op,j)=>{
+let el=document.getElementById(`opt${i}_${j}`);
+el.classList.remove("correct","wrong");
+if(j===p.a)el.classList.add("correct");
+else if(sel && Number(sel.value)===j)el.classList.add("wrong");
+});
+
+exp.style.display="block";
+exp.innerHTML=(correcta?"<b>¡Correcto!</b> ":"<b>Respuesta incorrecta.</b> La respuesta correcta es "+String.fromCharCode(65+p.a)+". ")+p.e;
+});
+
+document.getElementById("result").innerHTML=
+`Calificación: ${puntos}/100 puntos<br>
+Contestadas: ${contestadas}/20<br>
+${puntos>=90?"¡Excelente dominio!":puntos>=80?"¡Muy buen trabajo!":puntos>=70?"Buen trabajo, sigue repasando.":"Necesitas reforzar algunos conceptos."}`;
+
+window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+
+function reiniciar(){
+document.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);
+document.querySelectorAll('.explanation').forEach(x=>x.style.display="none");
+document.querySelectorAll('.option').forEach(x=>x.classList.remove("correct","wrong"));
+document.getElementById("result").innerHTML="";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
