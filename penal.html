@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repaso Derecho Penal I</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial;background:#f1f4f8;color:#263445;margin:0;padding:20px}
+main{max-width:900px;margin:auto}
+header{background:#17324d;color:white;padding:28px;border-radius:14px}
+h1{margin:0}
+.card{background:white;padding:22px;border-radius:12px;margin:18px 0;box-shadow:0 3px 12px #0001}
+.question{padding:18px 0;border-bottom:1px solid #ddd}
+.option{display:block;padding:12px;margin:8px 0;border:1px solid #d5dce3;border-radius:8px;cursor:pointer}
+.option:hover{background:#eef4f8}
+.option input{margin-right:10px}
+.correct{background:#e3f5e9;border-color:#27864a}
+.wrong{background:#fdeaea;border-color:#c0392b}
+.explanation{display:none;padding:12px;background:#eef4f8;border-radius:8px;margin-top:10px}
+button{background:#17324d;color:white;border:0;padding:13px 20px;border-radius:8px;cursor:pointer;margin:8px 5px 8px 0}
+button:hover{background:#245b82}
+#result{font-size:22px;font-weight:bold;margin:18px 0}
+small{color:#637383}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+<h1>Derecho Penal I</h1>
+<p>Repaso interactivo – Teoría de la Ley Penal</p>
+<p>Selección múltiple | 20 preguntas | 100 puntos</p>
+</header>
+
+<div class="card">
+<h2>Instrucciones</h2>
+<p>Lee cada pregunta y selecciona la respuesta que consideres correcta.</p>
+<p>Al finalizar podrás ver tu calificación y las explicaciones de cada respuesta.</p>
+</div>
+
+<div class="card">
+<h2>Examen de repaso</h2>
+<div id="quiz"></div>
+<button onclick="calificar()">Finalizar y calificar</button>
+<button onclick="reiniciar()">Repetir examen</button>
+<div id="result"></div>
+</div>
+
+</main>
+
+<script>
+const preguntas=[
+{
+q:"¿Qué se entiende por fuente de producción del Derecho Penal?",
+o:["Los medios utilizados para interpretar las leyes.","El órgano o sujeto con potestad para crear normas penales.","Las decisiones de los tribunales.","Las costumbres de una sociedad."],
+a:1,e:"Las fuentes de producción identifican quién tiene la potestad de crear las normas jurídicas penales. Esa potestad se ejerce por los órganos competentes del Estado."
+},
+{
+q:"¿Cuál es la fuente directa de conocimiento del Derecho Penal?",
+o:["La doctrina.","La costumbre.","La ley.","La jurisprudencia."],
+a:2,e:"La ley es la fuente directa de conocimiento porque contiene las disposiciones que describen los delitos y establecen sus consecuencias jurídicas."
+},
+{
+q:"¿Qué establece el principio de legalidad?",
+o:["Que el juez puede establecer delitos libremente.","Que una persona solo puede ser sancionada por hechos previstos previamente en la ley.","Que la costumbre puede establecer penas.","Que toda conducta inmoral debe castigarse."],
+a:1,e:"El principio de legalidad exige que el delito y la pena estén establecidos en una ley anterior a la realización del hecho."
+},
+{
+q:"¿Qué artículo de la Constitución Política de Panamá recoge el principio de legalidad penal?",
+o:["Artículo 159.","Artículo 31.","Artículo 32.","Artículo 17."],
+a:1,e:"El artículo 31 dispone que solo serán penados los hechos declarados punibles por ley anterior a su perpetración y exactamente aplicable al acto imputado."
+},
+{
+q:"¿Qué significa la expresión latina ius puniendi?",
+o:["Derecho a la defensa.","Poder punitivo del Estado.","Derecho a la propiedad.","Facultad de interpretar las leyes."],
+a:1,e:"Ius puniendi significa poder o facultad de castigar. Es la potestad punitiva que corresponde al Estado, dentro de los límites legales."
+},
+{
+q:"¿Quién es titular del poder punitivo?",
+o:["Los ciudadanos individualmente.","La Policía Nacional.","El Estado.","Los particulares."],
+a:2,e:"La titularidad del poder punitivo corresponde al Estado. Su ejercicio está limitado por las garantías constitucionales."
+},
+{
+q:"¿Puede la costumbre crear delitos?",
+o:["Sí, si es aceptada socialmente.","Sí, cuando tiene muchos años de existencia.","No, porque se exige una ley previa.","Sí, cuando lo determina un juez."],
+a:2,e:"La costumbre no puede crear delitos ni establecer penas. Esto responde al principio de legalidad penal."
+},
+{
+q:"¿Qué son las fuentes indirectas del Derecho Penal?",
+o:["Las que crean directamente delitos.","Las que ayudan a estudiar e interpretar las normas penales.","Las que sustituyen la Constitución.","Las que imponen sanciones."],
+a:1,e:"Son referencias que contribuyen al análisis e interpretación del Derecho Penal, como la doctrina y la jurisprudencia."
+},
+{
+q:"¿Cuál de las siguientes opciones constituye una fuente indirecta?",
+o:["La ley penal.","La doctrina.","El tipo penal.","La pena establecida por ley."],
+a:1,e:"La doctrina es una fuente indirecta de conocimiento porque contiene estudios y opiniones de especialistas en Derecho."
+},
+{
+q:"¿Qué establece el artículo 159 de la Constitución panameña?",
+o:["El principio de legalidad penal.","Atribuciones legislativas de la Asamblea Nacional, entre ellas expedir las leyes nacionales.","La facultad de los jueces de crear delitos.","La potestad de la costumbre para imponer penas."],
+a:1,e:"El artículo 159 contempla atribuciones legislativas de la Asamblea Nacional."
+},
+{
+q:"¿Por qué es importante el principio de legalidad?",
+o:["Porque permite castigar sin pruebas.","Porque limita el poder punitivo del Estado y brinda seguridad jurídica.","Porque permite crear penas retroactivamente.","Porque elimina el derecho de defensa."],
+a:1,e:"El principio de legalidad protege a las personas frente a sanciones arbitrarias y limita el poder del Estado."
+},
+{
+q:"Una persona realiza una conducta que la sociedad considera inmoral, pero que no está tipificada como delito. ¿Puede ser condenada penalmente por ese solo motivo?",
+o:["Sí, porque la sociedad lo considera incorrecto.","Sí, porque la moral reemplaza la ley.","No, porque debe existir una ley penal previa.","Sí, porque el juez puede inventar el delito."],
+a:2,e:"No puede existir condena penal por una conducta que no esté previamente establecida como delito en la ley."
+},
+{
+q:"¿Qué función cumple la jurisprudencia en el estudio del Derecho Penal?",
+o:["Crear delitos sin ley.","Contribuir a la interpretación de las normas mediante decisiones judiciales.","Sustituir la Constitución.","Establecer delitos mediante costumbres."],
+a:1,e:"La jurisprudencia permite conocer cómo los tribunales interpretan y aplican las normas jurídicas."
+},
+{
+q:"¿Qué función cumple la doctrina?",
+o:["Establecer penas obligatorias por sí misma.","Analizar y explicar las instituciones jurídicas mediante estudios especializados.","Reemplazar las leyes penales.","Crear delitos."],
+a:1,e:"La doctrina reúne estudios y opiniones de especialistas que ayudan a comprender el Derecho Penal."
+},
+{
+q:"¿Qué protege el principio de legalidad frente al poder del Estado?",
+o:["La arbitrariedad en la imposición de penas.","La seguridad jurídica de los ciudadanos.","La posibilidad de crear delitos libremente.","La aplicación de castigos sin ley."],
+a:1,e:"Protege la seguridad jurídica al exigir que las conductas punibles y sus sanciones estén previamente establecidas."
+},
+{
+q:"¿Cuál es la diferencia entre fuente de producción y fuente de conocimiento?",
+o:["No existe ninguna diferencia.","Producción identifica quién crea la norma; conocimiento permite conocerla y estudiarla.","Producción es la costumbre y conocimiento es la moral.","Ambas significan exclusivamente jurisprudencia."],
+a:1,e:"La fuente de producción responde quién tiene la potestad de crear la norma. La fuente de conocimiento indica cómo se conoce y estudia."
+},
+{
+q:"Un juez pretende sancionar una conducta utilizando únicamente una costumbre social. ¿Es correcto?",
+o:["Sí, porque el juez tiene libertad absoluta.","Sí, si la costumbre es antigua.","No, porque se requiere una ley penal previa.","Sí, si la mayoría está de acuerdo."],
+a:2,e:"La costumbre no puede sustituir la ley penal ni servir para crear delitos o penas."
+},
+{
+q:"¿Qué relación existe entre el ius puniendi y el principio de legalidad?",
+o:["El principio de legalidad elimina el poder del Estado.","El principio de legalidad establece límites al poder punitivo del Estado.","El ius puniendi permite castigar sin normas.","No tienen relación."],
+a:1,e:"El Estado tiene poder punitivo, pero debe ejercerlo dentro de los límites establecidos por la Constitución y la ley."
+},
+{
+q:"¿Qué significa que la ley penal debe ser anterior al hecho?",
+o:["Que puede aprobarse después del delito.","Que debe existir antes de que se realice la conducta punible.","Que puede establecerse durante el juicio.","Que depende de la opinión del juez."],
+a:1,e:"La ley debe estar vigente antes de la realización del hecho para que pueda fundamentar una sanción penal."
+},
+{
+q:"¿Cuál es la idea fundamental del principio de legalidad penal?",
+o:["No hay delito ni pena sin ley previa.","La costumbre tiene mayor fuerza que la ley.","El juez puede establecer delitos.","El Estado puede castigar cualquier conducta."],
+a:0,e:"La fórmula clásica del principio de legalidad es: no hay delito ni pena sin ley previa."
+}
+];
+
+const quiz=document.getElementById("quiz");
+
+preguntas.forEach((p,i)=>{
+let div=document.createElement("div");
+div.className="question";
+div.innerHTML=`<h3>${i+1}. ${p.q}</h3>`;
+p.o.forEach((op,j)=>{
+div.innerHTML+=`
+<label class="option" id="opt${i}_${j}">
+<input type="radio" name="q${i}" value="${j}">
+${String.fromCharCode(65+j)}. ${op}
+</label>`;
+});
+div.innerHTML+=`<div class="explanation" id="exp${i}"></div>`;
+quiz.appendChild(div);
+});
+
+function calificar(){
+let puntos=0;
+let contestadas=0;
+
+preguntas.forEach((p,i)=>{
+let sel=document.querySelector(`input[name="q${i}"]:checked`);
+let exp=document.getElementById("exp"+i);
+
+if(sel)contestadas++;
+
+let correcta=sel && Number(sel.value)===p.a;
+
+if(correcta)puntos+=5;
+
+p.o.forEach((op,j)=>{
+let el=document.getElementById(`opt${i}_${j}`);
+el.classList.remove("correct","wrong");
+if(j===p.a)el.classList.add("correct");
+else if(sel && Number(sel.value)===j)el.classList.add("wrong");
+});
+
+exp.style.display="block";
+exp.innerHTML=(correcta?"<b>¡Correcto!</b> ":"<b>Respuesta incorrecta.</b> La respuesta correcta es "+String.fromCharCode(65+p.a)+". ")+p.e;
+});
+
+document.getElementById("result").innerHTML=
+`Calificación: ${puntos}/100 puntos<br>
+Contestadas: ${contestadas}/20<br>
+${puntos>=90?"¡Excelente dominio!":puntos>=80?"¡Muy buen trabajo!":puntos>=70?"Buen trabajo, sigue repasando.":"Necesitas reforzar algunos conceptos."}`;
+
+window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+}
+
+function reiniciar(){
+document.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);
+document.querySelectorAll('.explanation').forEach(x=>x.style.display="none");
+document.querySelectorAll('.option').forEach(x=>x.classList.remove("correct","wrong"));
+document.getElementById("result").innerHTML="";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
